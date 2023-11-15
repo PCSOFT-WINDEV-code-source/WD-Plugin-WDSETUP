@@ -1,0 +1,169 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : FI_PLANINSTALLPERSO
+ major_version : 28
+ minor_version : 0
+ type : 8
+ description : ""
+ subtype : 0
+window :
+ name : FI_PLANINSTALLPERSO
+ identifier : 0x25ed4a410104c471
+ internal_properties : CAAAAAgAAADno9XLwWfeaPYggffKFaRd6dVo5yP4hVycoW60gnRNvnjvsHHpcVbFaTkSS8zrS2lHpqZ8+LyMKnZ2CQ0lzGNA9WUf9kxjkpY8pTCdzz+H6pYtQIckDXfILpvKqvutvvLWe0HrFzPDLJ7yj4pMCvHCCTlXOEXZn7dIppog2p/nkefqUlpSOt1ATCDf71XueVdPQTS0pIqRQkNKxiYFj7ieKsVOCofJ2UQ7EBv6d1lnE/jOXfVVCIHCqnSgCYLRGOq5gDh8hh7hBo8LwoYoRLyCUfN0vM4/JWqzoWLjidO0wAS4EqqOk5RntdKPBX42eAW2OZ1ehZD015IdEqGBMK5KcCHR5bwPAMnXtLO3cngDPSQuZrQWXKzY56Jg86OZD+XPPN2gv8AvtfGJ3FUbPq2a+uzW7ACjRKLOqUHDPS0+hysmTIFOuVUTBvpqlA/2GVhYtHRHoNwYNnESdoW+OJ+Xa125ipmRkQxEwcfCxoVXKZIjmI5GYBfbOrPx9im8xLgUNRELIEUZk5+7VKt61pUbJToTL4q9IEU1wlIxTrKs9Z+20sm756pUgfuMCdDsIt+F1Dh5ipq9ErsFb5YrVn9dN+L3QiIRmen4z126oZ7DHn5Lg31riso+d0p2jWpBH3h6VX2v8omu18PfRhe+6x4nJyGGO0zHmSZUporI7xAmo/DZw9ihA5vzVlMlhXedGc9L6mI=
+ properties :
+  width : 530
+  height : 385
+ controls :
+  -
+    name : FI_PLANINSTALLPERSO
+    identifier : 0x25ed4a410105c471
+    internal_properties : CAAAAAgAAAA2XdCmZ7PF5hh1wR++4/F/PhMAGaPaf+9/Rmi4OargDvMQJjNMyAsc7GdBSPJEYHCdGhJeBzEISxBFjkevOPqNQXjnZ/529EE0oj2a5VYQJYy3xyd+tRLu06Tgwuzk4Zorn+eISDBoVQq8fBqBs2A0Ig64COEjv4Tsgnel3PAFPJFFroAUucEBbBrD901VAwKbqHWAVBrVGPSYV1aF10AiXLqs6M/DZLNDrsh3L+85ETkHnW5AGh3KEBkU0UxHTwDU35WLFNd4pNNGOKzyX8NxRQKQABwsuKo54MOOPXW3NGs0AmlIa/6h60pqIgmvojDMMsVMu1VjrtxihRRHyjq/WzyAe66XNcngqASOXt/C4Nc3lPiYkTgTUi3a/WZofgj3BPHQQq5g3wphF2OnFaafRINNzSWkcMBdbByGhE1xu3GOhyYKuHQMyOdXQY/KDqAuQqv+iyjVMQnlcqbkDTibVlsKwVlLH/eSpVfwowA=
+    properties :
+     width : 530
+     height : 385
+    controls :
+     -
+       name : TITRE_P47
+       identifier : 0x25ed4a410106c471
+       internal_properties : CAAAAAgAAADsYTs8uvtNz1M6L2X0/sSrbjh+V3zxkRkOJ03mNWBYOQIpUDy4FLdOPln65mAFGwHckJj1mPbLJkoULGz8CCF2fxPOgHb0Q+V9YEOk8MGGVsnS7aoZEqFeuPMk05sQxcBBWkS4c64Au/uB6MfiLimPeBguQLuarWdwQcCyI+Rupoirm0x6u8JO3sxFpUZAZSiQJBUyLZuGA2M2JoKqMJLF74mLrAwUormGGnr4mwhPu7xqlwiI0ccRyY3QXAQZbqNSupOmPjMycwBCEeJBqOP4KnLcpw8P9VFejV+qBa6eKZ1p4MpcMACo1In4aWxbQ60sJkXV218+B981MDQThTRGeGRUpfNjNJ5cqJBxY6NwTheaTv56luRvPc6lG6e259GOFPEc3nWGc1b85fdqmeFtqqs4Rw0vAESIg0Ksne0QnnaAqCaMKNhOxOqKRR3tYpQWPP/ffi9gjfkLfPwaJGWthbPHneUfNDTXD88jbt5YVD+9Y4JonovHJyxaOI/EjnTo8xAkLdke39gb13UZV0TUW2T8Vd3qh/XXlrBfHiBJxZ1imIlJtUBeCyO3lwbsfaJoTqzUIucmuL/uGpk3ZsDwDeHZ0IcOR8lwy2Udr7ZSQvVJApPAbCHlFLwQlqh64rQPHWWXWKc3ny4G
+       properties :
+        width : 529
+        height : 73
+       type : 3
+       code_elements :
+        type_code : 2
+        p_codes :
+         -
+           code : |1-
+            
+           type : 14
+     -
+       name : LIB_EX
+       identifier : 0x25ed8f6d00ddfa16
+       internal_properties : CAAAAAgAAABw9Kl7ICgC8Y3bCC02iuQrz3qc93HScSdn796is1Ef7GRVMpPFU+hcvUuaPSSFinzn+oBg/o41D8VbkcRe9ChVMMUTmJaY+AJ4j9QR/qrHeEjDxT4Nl5NiKyl5Q2W2rf3+X6P9q/jDnWP6vV3jCZDgztqap94HsEVe9PzNJ0dLjL5WtHpDWC5NZY733pKxToyG8ovwR0VeeVEJzAIDx6tYTkIthTyRSzyCRca+NQfu+OLEV0vtEtPT7Auc8hgdnoj3yGld/JIz2nVU6IK2c39C3EiSyM7ueGU2df32TfnFFhYP+dy/d4W0EFAOVabrTrwp1N4dI/+4ftma5RFv1UxRMPxIpyBLca9VyVr5nHyyQmsU0ALEPpHFnBYxVbLcmFr1vpb85isa0ulG0sqEPww3yMWkPYISo6kJRalTbbTNOs11lw7mbifjrwev4cdQGwoJoP6M5AO+XX7eiBpPA0xFb5UTAcZyBMRf2tuO9g4YwnYKqQxL2it3c/jseGeAGdWQElFR/cE6BUjYxf8QQBfj3seoAm65ybOfg6zYL0pljuAMfy44x7JHjfP71Tu1IhJenjYIW+katl94zi7ybO7fFeFjklLhSMaSeg==
+       properties :
+        y : -33
+        width : 530
+        height : 27
+       type : 3
+       code_elements :
+        type_code : 2
+        p_codes : []
+     -
+       name : SEL_NIVEAU_REGISTRE
+       identifier : 0x25ed9c7c00f3fbd3
+       internal_properties : CAAAAAgAAAADdawxVOa++yu/9l0Sj4yPzbRVu+wd6bc71es8HVGMrbgwSRLrJaiFzWehTIyNpSD3NdnAL1n/6j5P5LPEzwzu7HB8Ez2CxTkXuaOe5q7oRFpftEpH6WPTnOalw9qL1q7MMY193HZh3LWEZjAIJ8YOGimCwdqJQfknIRneyHehwThj6QFTdXF/cFeeh49FblWZ+sPy72LPGryIW6+SQplwXs2/HWCJsSHYiQIRoxqXcsOPO8RofNqHjo52ucB8k+etsW2zv8GDsudu7eSfIwonSf7Cj8Iz7yPwMdtmMz75lpE6M1mNQ/cdwBLl0qM/UVviNBAEqbiMCCYbC62rFnIr792LrCCoIOhcR/CDWTgAMozcRCfei6aMBi4MY2vPOIpdyzrDroQObLIj8bXYwRZWXhChfFCZ0t0t6EsmqwzwsV73qaJdO+nhNViksHP0DnwMyZluZ7cemHJUcE3YuCrhMp9Rqrvq1pX64O7SsPvgVILKCtZLeBOq6fgTRvmdw2TotDV5HNeUpe4xOaWv5MHb8Z+BUAYjXsuFQjXIx783LWKwt7ih737M/eHTAWiF7CUwyT9WvjG+/r8uY9KgIPvtMfCIU6CTePb/pbap0xDZrH6Wl2NO5LsfM7iqVGoRfrk0AOj6MzCkFhPpIMB/MJAqMk9biocP8gpg+8rP80D46q2qWS8x5+rBWHlokfvwcz/j/4JZ6u5JwhZKTTaeB2kvhbCdMyadsqe9tQuCZajDpvtEinesCL4mD6t48BJD470RMmgqjdy4CvOpjYdAijHL7sBtrzJ9Mc6ZN8k0SABfQ/Zr6jGfL4LP7NBG6flZz7ENXlx11cXqlP7/8o/viPtIQ5Sz1LAlLw+EDljsIwR3hwa+T1ZbsonLtpxJVZgAgxpi68SaIlOvftb5eqf6tKEsrHxU3l/nP8VtQeTlW9M8bQ9aWWu3SMV5fS+tv/6BtHcKDBmkI79kVLy4OHDx6cX/cHZ7Kcouut5rk4KhSuJqIygH2wYQ0XLriHC6o/quIMEYGqW9rc9YGpgj+1ixlgQGDqBXvMBWvHY41jyj01WpVDR1LCPWPSPJjp5JQH30iXP2CsszHf6NSjd2DPllnDVWUz4fPxU7kZXAwe7vqnbw4zEhl55HuWCm177fxA==
+       properties :
+        y : 79
+        width : 524
+        height : 56
+       options :
+        -
+          internal_properties : CAAAAAgAAACvKGyhZ3YSgG6gmCCygx1CJUH2GjVSZDN87b71Nr5keLQU7S0My6NE2kIelI3dqQtExMcGZDuicne/cw3GkOgF8sxJylLwa7Fqxx55egI3rfIWoAWjEkJHS5dkFf7n3GT2PU3qyXXnDgr6wv9Fd+e5O9izd3puJdMPvp/hAucLKxrIKuZSHWCMhQcXti7ouFA0lYjo3Y6Sm30mLg==
+        -
+          internal_properties : CAAAAAgAAABwUrpC67Ljr34qUYXBbk9RUvDHlmdzYZJz//eaoALwM2RSbsITKYMbUi5l5NKKIm8GmXsJuA/VswbTQ00qZlZb/QtQbDx4VCN+aEv3ddCp8tMHmrJ1UtKRUXtpDKw/BMcd37CZynfl8IjEt47AKqBFKe68HXOcmveA1/c9XycLxjv9TGd7hegN1bSDpgiISyMT8wDdVQ==
+       type : 6
+       controls : []
+       code_elements :
+        type_code : 6
+        p_codes : []
+    type : 32
+    code_elements :
+     type_code : 70
+     p_codes :
+      -
+        code : |1+
+         PROCEDURE MaFenêtre()
+ menu :
+  name : _Menu
+  identifier : 0x25ddd478a6431ca4
+  internal_properties : CAAAAAgAAAD7S+2GOLjEeheq9Y6YZGIRPpLnwB8KUS2je4S4X5oxSGrv51WBBaVxxbk/BTEdUwW0fnnvlhQNIBAuQTAO0S9+S8FMTvDhqkS1JydqFJBfHlbZSFzBkZAjjJ5aIH/cuMnF4Pme57TAyYvjnlkzTJmN5UX9hu+BEl3AsIsso5gsz3oX/KHp1ai/xWZCb54MlUFXdWmT2EOpULKqea/LH9EOlTkaiWsV2aM2/FfXQjTSY3NhAR6zEzKHYKVJwiZULchG0D4LNvRbPifZJPDMmlF6ptz+Rg0QN6SXG5jU7HifIzmkonwDFnOJQw==
+  options : []
+ languages :
+  - fr-FR
+ popup_menus : []
+ message_bar : {}
+ actionbar : {}
+ code_elements :
+  type_code : 71
+  p_codes : []
+  procedures :
+   -
+     name : Init
+     procedure_id : 1580000687325430897
+     type_code : 14
+     code : |1-
+      // Procédure appelée une fois pour initialiser les plans personnalisés
+      PROCEDURE Init()
+      
+      	selon COL_PLUGINWDSETUP.geEmplacementDéfaut
+      		CAS UtilisateurCourant
+      			SEL_NIVEAU_REGISTRE = 2
+      			
+      		CAS MachineLocale
+      			SEL_NIVEAU_REGISTRE = 1
+      	FIN
+     type : 458752
+   -
+     name : bControl
+     procedure_id : 1580000687325496433
+     type_code : 14
+     code : |1-
+      //Procédure de contrôle permettant de valider le passage au plan suivant
+      PROCEDURE bControl(nCurrentPlane est entier <utile>) : booléen
+      
+      	// nCurrentPlane : contient le numéro de plan actuel
+      	
+      	selon SEL_NIVEAU_REGISTRE
+      		cas 1
+      			COL_PLUGINWDSETUP.geEmplacementDéfaut = MachineLocale
+      			
+      		cas 2
+      			COL_PLUGINWDSETUP.geEmplacementDéfaut = UtilisateurCourant
+      	FIN
+      
+      	// Si on peut passer au plan suivant :
+      	RENVOYER Vrai
+      	
+      	// Si une erreur de saisie, ou un autre problème empêche le passage au plan suivant :
+      	// (Il est alors préférable d'afficher un message à l'utilisateur pour indiquer la raison)
+      	// RENVOYER Faux
+     type : 458752
+   -
+     name : nNextPlane
+     procedure_id : 1580000687325561969
+     type_code : 14
+     code : |1-
+      // Procédure permettant de donner le plan personnalisé à afficher
+      PROCEDURE nNextPlane(nCurrentPlane est entier) : entier
+      
+      	// nCurrentPlane : plan actuel
+      	selon nCurrentPlane
+      		
+      		// Plan d'initialisation : on démarre l'enchaînement
+      		cas 0
+      			renvoyer 1
+      			
+      		// Enchaînement...
+      		// CAS 1
+      			// RENVOYER 2
+      		
+      		AUTRE CAS
+      			// Enchaînement terminé : on termine
+      			renvoyer 0
+      	FIN
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : FI_SansNom1
+resources :
+ string_res :
+  identifier : 0x10d99ac53a5a9d9d
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAAC68/W0/adbG0nFCRhrE42B5HRnbDzVHaz86sSQyxlBk7I=
+rad :
+ internal_properties : CAAAAAgAAABoAN7PLpwJW3EiA7WVZdCA5EwrCA1rvutcDHooMWKe

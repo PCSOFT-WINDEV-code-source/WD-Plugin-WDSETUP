@@ -1,0 +1,177 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : COL_PLUGINWDSETUP
+ major_version : 28
+ minor_version : 0
+ type : 7
+ description : ""
+ subtype : 0
+procedure_set :
+ identifier : 0x15ed44b1002309c2
+ internal_properties : CAAAAAgAAABGLu41kG7fjQV3iS4F72qmnKaNh5694reolNKIW0iw
+ code_elements :
+  type_code : 31
+  p_codes :
+   -
+     internal_properties : CAAAAAgAAADj1fovRZpWsvuAO474g2A5X0Ek8LiRQ+fTvg+kBFFHJ2UITmxrdOkhrK8/MJSiZU5DvtLcwHhAkug3fmMyvrxet79Cke/yjt5+GMgiaLCWJDUXBjmciZwdKprr8hH3Ra4vwx2PDAnwzIwu34Q=
+     code : |1-
+      
+      // Toutes les chaînes doivent être traitées en UNICODE
+      // Si une chaîne ANSI doit être utilisée, déclarer explicitement un type "chaîne ANSI"
+      
+      // PLUGININFO : contient les informations concernant l'installation
+      // Ces membres et leur valeur ne doivent pas être modifiés
+      STPluginInfo est une Structure  
+      	sSetupDir 					est chaine unicode			// Chemin de l'installation
+      	hFTPHandle 					est entier					// Handle à utiliser avec les fonctions FTP pour gérer les fichiers sur le serveur (cas d'un déploiement d'installation de référence HTTP par FTP)
+      	Label		 				est champ					// Libellé utilisé dans les traitements BeforeInstall() et AfterInstall() depuis l'assistant d'installation (Si le plugin effectue un traitement long, on peut utiliser ce champ pour en informer l'utilisateur)
+      	bWithAdminRights 			est booleen					// Vrai si les droits administrateur ont été attribué à l'installation, Faux sinon
+      	bNetworkReferenceInstall	est un booléen				// Vrai si l'installation courante est une installation serveur de référence ou une installation cliente
+      	bSilentInstall				est un booléen				// Vrai si l'installation est effectuée en mode 'Silence' (par exemple lors du mise à jour automatique d'application), Faux pour les autres modes d'installation
+      	bPushInstall				est un booléen				// Vrai si l'installation est effectuée en mode 'Push', Faux dans les autres modes d'installation
+      	sPathToExe					est une chaîne UNICODE		// Chemin complet de l'exécutable de référence installé
+      FIN
+      
+      // PLUGINUNINSTALL : permet d'enregistrer les éléments à nettoyer, effacer et supprimer lors de la désinstallation
+      // La valeur de ces membres est modifiable
+      STPluginUninstall est une Structure  
+      	tabFiles 					est tableau de chaînes UNICODE		// Liste des fichiers à supprimer	
+      	tabDirectories 				est tableau de chaînes UNICODE		// Liste des répertoires à supprimer (Attention : seuls les répertoires vides seront supprimés !)
+      	tabRegistryKeys 			est tableau de chaînes UNICODE		// Liste des clés de registre à supprimer
+      	tabRegistryValues 			est tableau de chaînes UNICODE		// Liste des valeurs de clé de registre à supprimer (format : <Chemin de clé>\<Nom de la valeur>)
+      	tabINIValues 				est tableau de chaînes UNICODE 		// Liste des valeurs de .INI à supprimer (format : <Section>TAB<Nom de la valeur>TAB><Chemin du .INI>)
+      	tabINISections 				est tableau de chaînes UNICODE 		// Liste des sections de .INI à supprimer (format : <Section>TAB<Chemin du .INI>)
+      	tabServices 				est tableau de chaînes UNICODE		// Liste des services à désinstaller
+      	tabScheduledTask 			est tableau de chaines UNICODE		// Liste des tâches planifiées à supprimer
+      	tabRunExe 					est tableau de chaines UNICODE		// Liste des exécutables à exécuter à la désinstallation (chemin complet ou relatif par rapport au chemin du désinstalleur)
+      FIN
+      
+      
+      // LE CODE CI-DESSOUS PEUT-ÊTRE PERSONNALISE SELON LES BESOINS ///////////
+      geEmplacementDéfaut est un NiveauRegistre = UtilisateurCourant
+     type : 720896
+  procedures :
+   -
+     name : Startup
+     procedure_id : 1579994571279174082
+     type_code : 15
+     code : |1-
+      // Procédure d'initialisation du plugin, appelée au lancement de l'installation
+      PROCEDURE Startup(stInfo est STPluginInfo <utile>)	
+      
+      	// LE CODE A EXECUTER PEUT-ÊTRE PERSONNALISE SELON LES BESOINS ///////////
+     type : 458752
+   -
+     name : BeforeInstall
+     procedure_id : 1579994571279239618
+     type_code : 15
+     code : |1-
+      // Procédure appelée au démarrage de l'installation
+      PROCEDURE BeforeInstall(stInfo est STPluginInfo <utile>, stUninstall est STPluginUninstall <utile>)
+      
+      	// LE CODE A EXECUTER PEUT-ÊTRE PERSONNALISE SELON LES BESOINS ///////////
+     type : 458752
+   -
+     name : AfterInstall
+     internal_properties : CAAAAAgAAAA6C5XMC1YM1ZJURXxrfa94YAeCL+JxZfSVqeR4vI2IZSpl1Vu7nT3cRUBlHZTMPt9Y3eFCqurQ52YEqSUER4YJhNJSWzX76h3a7RvI2Bfs8X5zymGmIbZ7WbGm9egnVKPG263wlxyBRvM2HoXh
+     procedure_id : 1579994571279305154
+     type_code : 15
+     code : |1-
+      // Procédure appelée après l'installation
+      PROCEDURE AfterInstall(stInfo est STPluginInfo, stUninstall est STPluginUninstall <utile>)
+      
+      	// LE CODE CI-DESSOUS PEUT-ÊTRE PERSONNALISE SELON LES BESOINS ///////////
+      	soit NOM_EXE = fExtraitChemin(stInfo.sPathToExe, fFichier + fExtension)
+      
+      	// Si on possède les droits administrateur
+      	si stInfo.bWithAdminRights ALORS
+      		
+      		// En installation cliente uniquement
+      		si stInfo.bNetworkReferenceInstall = faux ALORS
+      			
+      			bCréé est un booléen
+      			tabReg est un tableau de chaines unicode
+      						
+      			// Crée les extensions de fichiers
+      			(bCréé, tabReg) = SysExplorateurExtensionFichierCrée(".wdinfo", "FichierExemple", "Fichier exemple (Plugin WDSETUP)", "", geEmplacementDéfaut)
+      			
+      			// Ajoute les clés de registres créées à la liste des clés à supprimer lors de la désinstallation
+      			ajoute(stUninstall.tabRegistryKeys, tabReg)
+      			
+      			// Associe les extensions au programme
+      			(bCréé, tabReg) = SysExplorateurExtensionFichierAjouteAction("FichierExemple", ActionExplorateur.Ouvrir, "Ouvrir", stInfo.sSetupDir + [fsep] + NOM_EXE, PositionDéfaut, geEmplacementDéfaut)
+      			SysExplorateurExtensionFichierDéfinitActionDéfaut("FichierExemple", ActionExplorateur.Ouvrir, geEmplacementDéfaut)
+      			
+      			// Ajoute les clés de registres créées à la liste des clés à supprimer lors de la désinstallation
+      			ajoute(stUninstall.tabRegistryKeys, tabReg)
+      		FIN		
+      	FIN
+     type : 458752
+   -
+     name : BeforeAutoModif
+     procedure_id : 1579994571279370690
+     type_code : 15
+     code : |1-
+      // Procédure appelée avant la modification automatique des données (SDD)
+      PROCEDURE BeforeAutoModif(stInfo est STPluginInfo <utile>, stUninstall est STPluginUninstall <utile>)
+      
+      	// LE CODE A EXECUTER PEUT-ÊTRE PERSONNALISE SELON LES BESOINS ///////////
+     type : 458752
+   -
+     name : AfterAutoModif
+     procedure_id : 1579994571279436226
+     type_code : 15
+     code : |1-
+      // Procédure appelée après la modification automatique des données (SDD)
+      PROCEDURE AfterAutoModif(stInfo est STPluginInfo <utile>, stUninstall est STPluginUninstall <utile>)
+      
+      	// LE CODE A EXECUTER PEUT-ÊTRE PERSONNALISE SELON LES BESOINS ///////////
+     type : 458752
+   -
+     name : sCustomPlane
+     procedure_id : 1579994571279501762
+     type_code : 15
+     code : |1-
+      // Procédure permettant de déclarer une fenêtre interne à afficher dans l'assistant d'installation
+      PROCEDURE sCustomPlane() : chaine
+      
+      	// LE CODE CI-DESSOUS PEUT-ÊTRE PERSONNALISE SELON LES BESOINS ///////////
+      
+      	// Si aucune fenêtre interne n'est nécessaire :
+      	//renvoyer ""
+      	
+      	// Si une fenêtre interne doit être affichée dans l'assistant :
+      	RENVOYER "FI_PLANINSTALLPERSO"
+     type : 458752
+   -
+     name : BeforeUpload
+     procedure_id : 1579994571279567298
+     type_code : 15
+     code : |1-
+      // Procédure appelée avant envoi par FTP (installation de référence HTTP)
+      PROCEDURE BeforeUpload(stInfo est STPluginInfo <utile>, stUninstall est STPluginUninstall <utile>)
+      
+      	// LE CODE A EXECUTER PEUT-ÊTRE PERSONNALISE SELON LES BESOINS ///////////
+     type : 458752
+   -
+     name : AfterUpload
+     procedure_id : 1579994571279632834
+     type_code : 15
+     code : |1-
+      //Procédure appelée après envoi par FTP (installation de référence HTTP)
+      PROCEDURE AfterUpload(stInfo est STPluginInfo <utile>, stUninstall est STPluginUninstall <utile>)
+      
+      	// LE CODE A EXECUTER PEUT-ÊTRE PERSONNALISE SELON LES BESOINS ///////////
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : COL_SansNom1
+resources :
+ string_res :
+  identifier : 0x10d99ac53a4b9d7e
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ

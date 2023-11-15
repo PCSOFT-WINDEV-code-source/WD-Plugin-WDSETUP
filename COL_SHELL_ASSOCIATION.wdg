@@ -1,0 +1,287 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : COL_SHELL_ASSOCIATION
+ major_version : 28
+ minor_version : 0
+ type : 7
+ description : ""
+ subtype : 0
+procedure_set :
+ identifier : 0x15ed8ba8000b3e1d
+ internal_properties : CAAAAAgAAABGLu41kG7fjQV3iS4F72qmnKaNh5694reolNKIW0iw
+ code_elements :
+  type_code : 31
+  p_codes :
+   -
+     internal_properties : CAAAAAgAAAB5KcX1E/luadL+FEwXv4p9s75j8gVvt2eCe3d31XzCxXB36z79uqoXPCc+kqU3y4GX9gJlAwKc3aG3o5EoN3WrhSjzPa3sAAPjq+ZywkvMqHfMcNh71WfStx7WZQcev05N9K3LFtGFkoOgjUENGI2EVp8liHYWgrPHappH71lMJMVO2pLnIEBoqY+KCU+dJYO+d+vxakYVGexvIya4+X3aIC2S2f7EpqEKENg=
+     code : |1-
+      
+      ActionExplorateur est une Enumération
+      	Ouvrir					= "Open"
+      	OuvrirNouvelleFenêtre	= "Opennew"
+      	Imprimer				= "Print"
+      	ImprimerVers			= "Printto"
+      	Explorer				= "Explore"
+      	Propriétés 				= "Properties"
+      FIN
+      
+      PositionAction est une Enumération
+      	PositionDéfaut			
+      	PositionTop				= "Top"
+      	PositionBas				= "Bottom"
+      FIN
+      
+      NiveauRegistre est une Enumération
+      	UtilisateurCourant  = "HKEY_CURRENT_USER"
+      	MachineLocale 		= "HKEY_LOCAL_MACHINE"
+      FIN
+      
+      ASSOCMOD est un entier
+     type : 720896
+   -
+     internal_properties : CAAAAAgAAACxg1Tf69UaFtHq56gET75/meterDa319Mx2PPe6GUp4RsOQOC92r3h8olf1nRKU/wp3CgUJmod4TnIM+RZZxNvRi5fgvL/H3FDXY0bZyE1vSwW7zZrslFgk1Nge5jwUPsKFgqQT/rc9PrcDVY=
+     code : |1-
+      
+      soit SHCNE_ASSOCCHANGED = 0x08000000	
+      
+      // Informe l'explorateur que l'association a été modifiée
+      SI ASSOCMOD > 0 ALORS
+      	API("Shell32", "SHChangeNotify", SHCNE_ASSOCCHANGED, 0, 0, 0)		
+      FIN
+     type : 720898
+  procedures :
+   -
+     name : SysExplorateurExtensionFichierAjouteAction
+     internal_properties : CAAAAAgAAAAM34km+p2LM0Jafr/gijXeTImHicFj7lFu9FrqtgEK91qgYssHbROYrXPWPQuCRnMMZ684xbe6oq1nscH9xKapdVr2FWTPC1MVk/+hO52w5+vn7IjZ6fSvrcAYUpDA0PhZ/QJLYO5TzRKT4VFwJvmoQ216mG+7u8SECyh/lCtC1H7uDeo=
+     procedure_id : 1580072645193132340
+     type_code : 15
+     code : |1-
+      // Résumé : Définit une action à exécuter lors d'un clic droit sur un fichier du type défini dans l'explorateur
+      // Syntaxe :
+      //[ <Résultat> = ] SysExplorateurExtensionFichierAjouteAction (<sNomTypeFichier> est chaîne UNICODE, <eAction> est énumération, <sDescriptionAction> est chaîne UNICODE, <sLigneCommande> est chaîne UNICODE [, <ePosition> est énumération [, <eNiveauRegistre> est énumération]])
+      //
+      // Paramètres :
+      //	sNomTypeFichier (chaîne UNICODE) : Nom du type de fichier (créé avec SysExplorateurExtensionFichierCrée)
+      //	eAction (énumération) : Nom de l'action standard de l'explorateur à créer
+      //	sDescriptionAction (chaîne UNICODE) : Description de l'action (libellé qui apparaîtra dans le menu de l'explorateur)
+      //	sLigneCommande (chaîne UNICODE) : Ligne de commande à exécuter
+      //	ePosition (énumération) : Position de l'action dans le menu
+      //	eNiveauRegistre (énumération) : Niveau d'inscription dans la base de registre (UtilisateurCourant ou MachineLocale)
+      // Valeur de retour :
+      // 	booléen : Vrai si l'opération a réussi, Faux dans le cas contraire
+      //
+      PROCEDURE SysExplorateurExtensionFichierAjouteAction(local sNomTypeFichier est une chaine unicode, local eAction est une ActionExplorateur, local sDescriptionAction est une chaine unicode, ...
+                                                           local sLigneCommande est une chaine unicode, local ePosition est une PositionAction = PositionDéfaut, LOCAL eNiveauRegistre est un NiveauRegistre = UtilisateurCourant) : (booléen, tableau de chaînes unicode)
+      
+      	tabClés est un tableau de chaines unicode
+      	bAjouté est un booléen
+      
+      	// Rebond
+      	(bAjouté, tabClés) = SysExplorateurExtensionFichierAjouteAction(sNomTypeFichier, eAction..valeur, sDescriptionAction, sLigneCommande, ePosition, eNiveauRegistre)
+      	renvoyer (bAjouté, tabClés)
+      
+      CAS ERREUR:
+      	ErreurPropage()
+      	renvoyer (faux, tabClés)
+     type : 458752
+   -
+     name : SysExplorateurExtensionFichierAjouteAction
+     internal_properties : CAAAAAgAAADAqQkHp+aL9JtL2elETxJwUh9OXyVHK6ZEq6DJivsVvlP4MAM9QbZRYIQGa86ZPRGTVm0GspMNQKxlfEBAEtwAI95zWfY40kK9Asr/O6D5n56M4uF+gEcAT4L6M6zARB0pTM4FKc+TKKkSYNwnUNKnJNccGO0F6PMHQsHsH/BV292jujawbXP/SnbMmSly4xSe3H6hn6lBR8q3clW46sYBMBhNOg==
+     procedure_id : 1580072645193132340
+     type_code : 15
+     code : |1-
+      PROCEDURE SysExplorateurExtensionFichierAjouteAction(LOCAL sNomTypeFichier est une chaine unicode, local sAction est une chaine unicode, local sDescriptionAction est une chaine unicode, ...
+      													 LOCAL sLigneCommande est une chaine unicode, local ePosition est une PositionAction = PositionDéfaut, LOCAL eNiveauRegistre est un NiveauRegistre = UtilisateurCourant) : (booléen, tableau de chaînes unicode)
+      	
+      	sClé est une chaine unicode
+      	tabClés est un tableau de chaines unicode
+      	
+      	// On passe au type de fichier
+      	sClé = eNiveauRegistre..Valeur + ["\"] + ChaîneConstruit("Software\Classes\%1", sNomTypeFichier)
+      		
+      	// Crée le type de fichier
+      	SI RegistreExiste(sClé) _ou_ (RegistreCréeClé(sClé) _et_ Ajoute(tabClés, sClé)) ALORS
+      		
+      		// Crée l'action Shell
+      		SI RegistreExiste(sClé + ["\"] + "Shell") _OU_ RegistreCréeClé(sClé + ["\"] + "Shell") ALORS
+      						
+      			// Enregistre l'action
+      			SI RegistreExiste(sClé + ["\"] + "Shell" + ["\"] + sAction) _OU_ RegistreCréeClé(sClé + ["\"] + "Shell" + ["\"] + sAction) ALORS
+      				
+      				// Conserve la description de l'action
+      				si sDescriptionAction <> "" alors
+      					RegistreEcrit(sClé + ["\"] + "Shell" + ["\"] + sAction, "", sDescriptionAction, RegistreTypeChaîne)
+      				fin
+      				
+      				// Position spécifiée
+      				si ePosition <> PositionDéfaut ALORS
+      					RegistreEcrit(sClé + ["\"] + "Shell" + ["\"] + sAction, "Position", ePosition..Valeur, RegistreTypeChaîne)
+      				FIN
+      				
+      				// Enregistre l'action
+      				SI RegistreExiste(sClé + ["\"] + "Shell" + ["\"] + sAction + ["\"] + "Command") _OU_ RegistreCréeClé(sClé + ["\"] + "Shell" + ["\"] + sAction + ["\"] + "Command") ALORS
+      					
+      					// Conserve la ligne de commande
+      					RegistreEcrit(sClé + ["\"] + "Shell" + ["\"] + sAction + ["\"] + "Command", "", sLigneCommande, RegistreTypeChaîne)
+      					
+      					RENVOYER (Vrai, tabClés)
+      				FIN
+      			FIN
+      		FIN
+      	FIN
+      	
+      	ErreurPropage()
+      
+      RENVOYER (Faux, tabClés)
+      
+      CAS ERREUR:
+      	ErreurPropage()
+      	RENVOYER (Faux, tabClés)
+      	
+      fin:
+      	ASSOCMOD++
+     type : 458753
+   -
+     name : SysExplorateurExtensionFichierCrée
+     internal_properties : CAAAAAgAAACd51Z2IFv+Vo29v3e9rFMcxoJZHo8ctpVMPkz1qos6ipBnwFjzCskS3cGngr/MK4+ozSyX+mnlW/8IC5EJ9TkekyWiDnUwZfzgqwh0U6TBXeuKI0hmPetJeNog8YWUpSFCcz75bHGIAy6SuKQcVBGF5er2eGBJ5ZIkKOPgngCUZy/Xx/KLJeHnmZ5wt4Lkt00DT8nPAo7W1qCGE66GnXrNGzs8nZLeMAOHSr6VCJrxLpVijg==
+     procedure_id : 1580072645193198189
+     type_code : 15
+     code : |1-
+      // Résumé : Crée un nouveau type de fichier dans l'explorateur
+      // Syntaxe :
+      //[ <Résultat> = ] SysExplorateurExtensionFichierCrée (<sExtension> est chaîne UNICODE, <sNomTypeFichier> est chaîne UNICODE, <sNomConvivial> est chaîne UNICODE [, <sCheminIcone> est chaîne UNICODE [, <eNiveauRegistre> est énumération]])
+      //
+      // Paramètres :
+      //	sExtension (chaîne UNICODE) : Extension associée au type de fichier (ex. : ".tst")
+      //	sNomTypeFichier (chaîne UNICODE) : Nom du type de fichier
+      //	sNomConvivial (chaîne UNICODE) : Nom comvivial (libellé affiché dans l'explorateur) associé au type de fichier
+      //	sCheminIcone (chaîne UNICODE - valeur par défaut="") : Chemin complet de l'icône associée au type de fichier
+      //	eNiveauRegistre (énumération) : Niveau d'inscription dans la base de registre (UtilisateurCourant ou MachineLocale)
+      // Valeur de retour :
+      // 	booléen : Vrai si l'opération a réussi, Faux dans le cas contraire. Tableau des clés de registres créées
+      //
+      PROCEDURE SysExplorateurExtensionFichierCrée(local sExtension est une chaine unicode, local sNomTypeFichier est une chaine unicode, local sNomConvivial est une chaine unicode, ...
+      											 local sCheminIcone est une chaine unicode = "", local eNiveauRegistre est un NiveauRegistre = UtilisateurCourant) : (booléen, tableau de chaines unicode)
+      
+      	sClé est une chaine unicode
+      	tabClés est un tableau de chaines unicode
+      
+      	// Préfixe avec le . si nécessaire
+      	sExtension = ["."] + sExtension
+      	
+      	// Extension invalide ?
+      	si sExtension ~= "" ALORS
+      		ErreurDéclenche(500, "Aucune extension n'a été fournie")
+      		renvoyer (faux, tabClés)
+      	FIN
+      	
+      	// Construit le chemin de la clé
+      	sClé = eNiveauRegistre..Valeur + ["\"] + ChaîneConstruit("Software\Classes\%1", sExtension)
+      		
+      	// Crée la clé de registre
+      	si RegistreExiste(sClé) _ou_ (RegistreCréeClé(sClé) _ET_ Ajoute(tabClés, sClé)) ALORS
+      		
+      		// Associe le type de fichier
+      		RegistreEcrit(sClé, "", sNomTypeFichier, registretypechaine)
+      		
+      		// On passe au type de fichier
+      		sClé = eNiveauRegistre..Valeur + ["\"] + ChaîneConstruit("Software\Classes\%1", sNomTypeFichier)
+      		
+      		// Crée le type de fichier
+      		SI RegistreExiste(sClé) _OU_ (RegistreCréeClé(sClé) _ET_ Ajoute(tabClés, sClé)) ALORS
+      					
+      			// Associe le nom convivial de fichier
+      			RegistreEcrit(sClé, "", sNomConvivial, RegistreTypeChaîne)
+      			
+      			// Associe l'icone
+      			si sCheminIcone <> "" alors
+      				RegistreEcrit(sClé + ["\"] + "DefaultIcon", sCheminIcone, RegistreTypeChaîne)
+      			fin
+      		FIN
+      				
+      		renvoyer (vrai, tabClés)
+      	FIN
+      	
+      	ErreurPropage()
+      	
+      renvoyer (faux, tabClés)
+      
+      CAS ERREUR:
+      	ErreurPropage()
+      	RENVOYER (Faux, tabClés)
+     type : 458752
+   -
+     name : SysExplorateurExtensionFichierDéfinitActionDéfaut
+     internal_properties : CAAAAAgAAAAM34km+p2LM0Jafr/gijXeTImHicFj7lFu9FrqtgEK91qgYssHbROYrXPWPQuCRnMMZ684xbe6oq1nscH9xKapdVr2FWTPC1MVk/+hO52w5+vn7IjZ6fSvrcAYUpDA0PhZ/QJLYO5TzRKT4VFwJvmoQ216mG+7u8SECyh/lCtC1H7uDeo=
+     procedure_id : 1580072645193263850
+     type_code : 15
+     code : |1+
+      // Résumé : <indiquez ici ce que fait la procédure>
+      // Syntaxe :
+      //[ <Résultat> = ] SysExplorateurExtensionFichierDéfinitActionDéfaut (<sNomTypeFichier> est chaîne UNICODE, <eAction> est énumération [, <eNiveauRegistre> est énumération])
+      //
+      // Paramètres :
+      //	sNomTypeFichier (chaîne UNICODE) : Nom du type de fichier (créé avec SysExplorateurExtensionFichierCrée)
+      //	eAction (énumération) : Nom de l'action standard de l'explorateur
+      //	eNiveauRegistre (énumération) : Niveau d'inscription dans la base de registre (UtilisateurCourant ou MachineLocale)
+      // Valeur de retour :
+      // 	booléen : Vrai si l'opération a réussi, Faux dans le cas contraire
+      //
+      PROCEDURE SysExplorateurExtensionFichierDéfinitActionDéfaut(LOCAL sNomTypeFichier est une chaine unicode, local eAction est une ActionExplorateur, ...
+      															LOCAL eNiveauRegistre est un NiveauRegistre = UtilisateurCourant) : booléen
+      
+      // Rebond
+      RENVOYER SysExplorateurExtensionFichierDéfinitActionDéfaut(sNomTypeFichier, eAction..valeur, eNiveauRegistre)
+      
+      CAS ERREUR:
+      	ErreurPropage()
+      	RENVOYER Faux
+     type : 458752
+   -
+     name : SysExplorateurExtensionFichierDéfinitActionDéfaut
+     internal_properties : CAAAAAgAAABUHz8hVhFi02/J7EhBrMlSNO0MeAqWBppfCjnxm/4kgJdm7XWgB5T6wjMexC1lxpG0E9/miOIxDqpCyq3t86PoLtBkATH/1oB8x09XjEnNP/qUDpwcbSPg0NLupmnY36w8JgJ/5axk6CsPJRVV4Ib+UFiKlFTTIkF739C1c2Up+mtV1Q==
+     procedure_id : 1580072645193263850
+     type_code : 15
+     code : |1-
+      PROCEDURE SysExplorateurExtensionFichierDéfinitActionDéfaut(LOCAL sNomTypeFichier est une chaine unicode, local sAction est une chaîne UNICODE, ...
+      															LOCAL eNiveauRegistre est un NiveauRegistre = UtilisateurCourant) : booléen
+      	
+      	sClé est une chaine unicode
+      			
+      	// On passe au type de fichier
+      	sClé = eNiveauRegistre..Valeur + ["\"] + ChaîneConstruit("Software\Classes\%1", sNomTypeFichier)
+      	
+      	// Crée le type de fichier
+      	SI RegistreExiste(sClé) ALORS
+      		
+      		// Crée l'action Shell
+      		SI RegistreExiste(sClé + ["\"] + "Shell") ALORS
+      			
+      			// Conserve la description de l'action
+      			RegistreEcrit(sClé + ["\"] + "Shell", "", sAction, RegistreTypeChaîne)
+      		FIN
+      	FIN
+      	
+      	ErreurPropage()
+      
+      RENVOYER Faux
+      
+      CAS ERREUR:
+      	ErreurPropage()
+      	RENVOYER Faux
+      
+      FIN:
+      	ASSOCMOD++
+     type : 458753
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : COL_SansNom1
+resources :
+ string_res :
+  identifier : 0x10d99ac53a559d8d
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ
